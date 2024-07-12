@@ -1,2 +1,2 @@
 # MovieScout
-Movie search application integrating the TMDB API
+A movie search application built with React and TypeScript, leveraging PostgreSQL for a scalable and efficient backend. This app integrates the TMDB API to deliver detailed movie information, including titles, descriptions and more. The project includes comprehensive testing suites using Jest for unit tests and Cypress for end-to-end testing, ensuring a reliable and high-quality user experience.
