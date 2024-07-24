@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import styles from './app.module.css';
+import useMovies from './hooks/useMovies';
+import Movie from './components/Movie/Index';
+import Sidebar from './components/Sidebar/Index';
 
-function App() {
+export function App() {
+  const { movies, loading, error } = useMovies();
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={
+          <main>
+            <Sidebar />
+            <div className={styles.movieContainer}>
+              {movies.map((movie) => (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  poster_path={movie.poster_path}
+                  release_date={movie.release_date}
+                />
+              ))}
+            </div>
+          </main>
+        } />
+      </Routes>
+    </Router>
   );
 }
 
