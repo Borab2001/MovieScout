@@ -28,11 +28,10 @@ const Movie: React.FC<MovieProps> = ({
 
   return (
     <div
-      className={styles.movieCard}
-      style={{ backgroundImage: `url(https://image.tmdb.org/t/p/w300${poster_path})` }}
+      className={`${styles.movieCard} ${styles.movieCardBackground}`}
       onClick={handleCardClick}
     >
-      <button className={styles.favoriteButton}>
+      <button type='button' className={styles.favoriteButton} title="Favorite">
         <FaRegHeart />
       </button>
       <div className={styles.gradientOverlay}>

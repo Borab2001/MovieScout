@@ -52,3 +52,7 @@
     height: 40px;
     border-radius: 50%;
 }
+
+.movieCardBackground {
+    background-image: url(https://image.tmdb.org/t/p/w300${poster_path});
+}
